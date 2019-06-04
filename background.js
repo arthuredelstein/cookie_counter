@@ -40,7 +40,7 @@ browser.tabs.onRemoved.addListener(async (tabId, removeInfo) => {
   if (tabCookieCount !== undefined) {
     await accumulate(tabCookieCount);
   }
-  loadedTabMap.set(tabId, 0);
+  loadedTabMap.delete(tabId);
 });
 
 let navigationEndedHandler = async details => {
