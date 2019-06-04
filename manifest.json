@@ -17,5 +17,20 @@
 
   "background": {
     "scripts": ["background.js"]
+  },
+
+  "permissions": [
+    "webNavigation"
+  ],
+
+  "experiment_apis": {
+    "contentBlocking": {
+      "schema": "experiment/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["contentBlocking"]],
+        "script": "experiment/parent-implementation.js"
+      }
+    }
   }
 }
