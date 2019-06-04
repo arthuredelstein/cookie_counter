@@ -3,8 +3,8 @@ this.contentBlocking = class extends ExtensionAPI {
     return {
       contentBlocking: {
         async getContentBlockingLog(id) {
-          return context.extension.tabManager.get(id).nativeTab
-                        .linkedBrowser.getContentBlockingLog();
+          return await context.extension.tabManager.get(id).nativeTab
+                              .linkedBrowser.getContentBlockingLog();
         }
       }
     }

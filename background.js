@@ -20,7 +20,6 @@ var getTotalCount = async () => {
 };
 
 let accumulate = async (count) => {
-  console.log("accumulate " + count);
   let totalCount = await getTotalCount();
   totalCount += count;
   await browser.storage.local.set({"totalCount": totalCount});
@@ -28,8 +27,6 @@ let accumulate = async (count) => {
 
 let countBlockedTrackingCookiesInTab = async tabId => {
   let log = await browser.contentBlocking.getContentBlockingLog(tabId);
-  console.log(typeof log);
-  console.log(log);
   return countBlockedTrackingCookies(log);
 };
 
@@ -47,7 +44,7 @@ browser.tabs.onRemoved.addListener(async (tabId, removeInfo) => {
 });
 
 let navigationEndedHandler = async details => {
-  if (details.parentFrameId == -1) {
+  if (details.parentFrameId === -1) {
     let count = await countBlockedTrackingCookiesInTab(details.tabId);
     loadedTabMap.set(details.tabId, count);
   }
