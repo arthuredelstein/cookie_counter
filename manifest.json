@@ -10,10 +10,9 @@
   },
 
   "browser_action": {
-    "default_icon": {
-      "24": "cookie-icon-48.png"
-    },
-    "default_title": "Cookie Counter"
+    "default_icon": "cookie-icon-48.png",
+    "default_title": "Cookie Counter",
+    "default_popup": "popup.html"
   },
 
   "background": {
