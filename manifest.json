@@ -20,7 +20,8 @@
   },
 
   "permissions": [
-    "webNavigation"
+    "webNavigation",
+    "storage"
   ],
 
   "experiment_apis": {
