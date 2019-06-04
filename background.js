@@ -1,11 +1,5 @@
 const STATE_COOKIES_BLOCKED_TRACKER = 536870912;
 
-var totalCount = null;
-(async () => {
-  let stored = await browser.storage.local.get("totalCount");
-  totalCount = stored["totalCount"] || 0;
-})();
-
 loadedTabMap = new Map();
 
 let countBlockedTrackingCookies = function (log) {
@@ -20,7 +14,13 @@ let countBlockedTrackingCookies = function (log) {
   return blockedCount;
 };
 
+var getTotalCount = async () => {
+  let stored = await browser.storage.local.get("totalCount");
+  return stored["totalCount"] || 0;
+};
+
 let accumulate = async (count) => {
+  let totalCount = await getTotalCount();
   totalCount += count;
   await browser.storage.local.set({"totalCount": count});
 };
@@ -32,11 +32,14 @@ let countBlockedTrackingCookiesInTab = async tabId => {
 
 let tallyCookiesBlockedInTab = async tabId => {
   let count = await countBlockedTrackingCookiesInTab(tabId);
-  await accumulate(count);
+  await accumulat>e(count);
 };
 
 browser.tabs.onRemoved.addListener(async (tabId, removeInfo) => {
-  await accumulate(loadedTabMap.get(tabId));
+  let tabCookieCount = loadedTabMap.get(tabId);
+  if (tabCookieCount !== undefined) {
+    await accumulate(tabCookieCount);
+  }
   loadedTabMap.set(tabId, 0);
 });
 
