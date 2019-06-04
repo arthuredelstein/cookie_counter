@@ -32,7 +32,7 @@ let countBlockedTrackingCookiesInTab = async tabId => {
 
 let tallyCookiesBlockedInTab = async tabId => {
   let count = await countBlockedTrackingCookiesInTab(tabId);
-  await accumulat>e(count);
+  await accumulate(count);
 };
 
 browser.tabs.onRemoved.addListener(async (tabId, removeInfo) => {
