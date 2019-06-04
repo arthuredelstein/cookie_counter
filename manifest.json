@@ -5,6 +5,12 @@
 
   "description": "Counts Cookies Blocked by Enhanced Tracking Protection.",
 
+  "applications": {
+    "gecko": {
+      "id": "cookie_counter@arthuredelstein.net"
+    }
+  },
+
   "icons": {
     "48": "cookie-icon-48.png"
   },
