@@ -1,0 +1,20 @@
+[
+  {
+    "namespace": "contentBlocking",
+    "functions": [
+      {
+        "name": "getContentBlockingLog",
+        "type": "function",
+        "description": "Get the content blocking log for a given tab.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "tabID",
+            "type": "number",
+            "description": "The ID of the tab whose blocked content log we want."
+          }
+        ]
+      }
+    ]
+  }
+]
