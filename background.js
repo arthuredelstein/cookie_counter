@@ -4,7 +4,7 @@ loadedTabMap = new Map();
 
 let countBlockedTrackingCookies = function (log) {
   let blockedCount = 0;
-  for (let [origin, actions] of Object.entries(log)) {
+  for (let [origin, actions] of Object.entries(JSON.parse(log))) {
     for (let [state, blocking] of actions) {
       if (blocking && state === STATE_COOKIES_BLOCKED_TRACKER) {
         blockedCount++;
@@ -20,13 +20,16 @@ var getTotalCount = async () => {
 };
 
 let accumulate = async (count) => {
+  console.log("accumulate " + count);
   let totalCount = await getTotalCount();
   totalCount += count;
-  await browser.storage.local.set({"totalCount": count});
+  await browser.storage.local.set({"totalCount": totalCount});
 };
 
 let countBlockedTrackingCookiesInTab = async tabId => {
   let log = await browser.contentBlocking.getContentBlockingLog(tabId);
+  console.log(typeof log);
+  console.log(log);
   return countBlockedTrackingCookies(log);
 };
 
