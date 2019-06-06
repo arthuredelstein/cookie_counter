@@ -25,6 +25,10 @@ let accumulate = async (count) => {
   await browser.storage.local.set({"totalCount": totalCount});
 };
 
+var resetCount = async () => {
+  await browser.storage.local.set({"totalCount": 0});
+};
+
 let countBlockedTrackingCookiesInTab = async tabId => {
   let log = await browser.contentBlocking.getContentBlockingLog(tabId);
   return countBlockedTrackingCookies(log);
