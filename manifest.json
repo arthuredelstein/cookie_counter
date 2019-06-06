@@ -35,7 +35,7 @@
       "schema": "experiment/schema.json",
       "parent": {
         "scopes": ["addon_parent"],
-        "paths": [["contentBlocking"]],
+        "paths": [["contentBlocking", "useBasicList"]],
         "script": "experiment/parent-implementation.js"
       }
     }

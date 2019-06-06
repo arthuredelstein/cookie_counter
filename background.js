@@ -2,6 +2,8 @@ const STATE_COOKIES_BLOCKED_TRACKER = 536870912;
 
 loadedTabMap = new Map();
 
+browser.contentBlocking.useBasicList();
+
 let countBlockedTrackingCookies = function (log) {
   let blockedCount = 0;
   for (let [origin, actions] of Object.entries(JSON.parse(log))) {
