@@ -1,9 +1,12 @@
-const STATE_COOKIES_BLOCKED_TRACKER = 536870912;
+// see https://searchfox.org/mozilla-central/rev/7088fc958db5935eba24b413b1f16d6ab7bd13ea/uriloader/base/nsIWebProgressListener.idl#259
+const STATE_COOKIES_BLOCKED_TRACKER = 0x20000000;
 
 loadedTabMap = new Map();
 
 browser.contentBlocking.useBasicList();
 
+// see also examples at
+// https://searchfox.org/mozilla-central/rev/7088fc958db5935eba24b413b1f16d6ab7bd13ea/toolkit/components/antitracking/test/browser/browser_subResources.js
 let countBlockedTrackingCookies = function (log) {
   let blockedCount = 0;
   for (let [origin, actions] of Object.entries(JSON.parse(log))) {
