@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
   "name": "Cookie Counter",
-  "version": "0.13",
+  "version": "0.14",
 
-  "description": "Counts Cookies Blocked by Enhanced Tracking Protection.",
+  "description": "Counts cookies blocked by Enhanced Tracking Protection, and logs all tracking events.",
 
   "applications": {
     "gecko": {
